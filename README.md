@@ -4,12 +4,15 @@
 
 솔직히 그렇게 유익 한 시간이라고 말 할수는 없지만
 
-그래도 유용하게 쓸 만한 것들은 있다
+그래도 파이썬을 자주 사용함에 있어서 유용하게, 자주 쓸만한 것들을 배웠다
 
 그것에 대하여는 여기에 적어 나중에 보러 올 때 여기서 검색용도로 만들었다
 
+나중에 쓸만한 모듈이나 패키지 같은거 있으면 여기에 링크 하자
 
 --------
+
+## 먼저 책에서 배운것 정리
 
 
 ## 1. String = "Python so hard" 
@@ -25,7 +28,6 @@
 #### 문자열 포매팅
 
     String = "%d %s %.2f" %(1,"2",3.14)
-
     String = "Python {0} {1} {2}".format(1,2,3)
 
 #### 문자열 정렬
@@ -48,11 +50,8 @@ f'{"py":>10}'
 
 ```
 upper(), lower()
-
 strip(), rstrip(), lstrip()  양쪽, 오른쪽, 왼쪽 공백 제거
-
 replace("a to","b")
-
 split(":") ":"를 기준으로 나누기
 ```
 
@@ -76,4 +75,101 @@ a.pop()                # 리스트의 맨 마지막 요소를 돌려주고, 삭�
                        # 그러니까 pop은 방 번호로 삭제, remove는 요소의 값을 찾아서 삭제
 a.count(x)             # 리스트에서 x의 개수를 돌려줌
 a.extend([a,b])        # a리스트에서 [a,b]를 더한다 // 그냥 리스트 더하기랑 같다...
+```
+
+
+## 3. Dict
+
+```python
+del dict[key]       # key 찾아서 삭제
+dick..keys()        # key 돌려줌
+dict.values()       # value 둘려줌
+dict.items()        # key와 value의 쌍을 튜플로 묶은 값을 돌려줌
+dict.clear()        # key, value 모두 삭제
+dict.get(key,default) # key에 해당하는 value 반환, 없으면 defalut(생략가능)
+
+dict in key
+```
+
+## 4. Class
+
+```python
+
+#class 사이는 2번 띄우기
+class cal():
+    def __init__(self):   # 생성자
+        self.a = a
+        self.b = b
+    def add(self):            # 메소드
+        return self.a + self.b
+
+class copycal(cal):   # 클래스 상속
+    pass
+
+class copycal(cal):    #  메소드 오버라이딩 method overriding
+    def add(self):
+        return self.a - self.b
+
+
+a = cal(1,2)
+print(a.add())
+b = copycal(2,1)
+print(b.add()) # 1
+
+# 참고로 메소드 오버로딩은 똑같은 함수를 불러오지만
+# 오버라이딩 처럼 재정의가 아닌 매개변수의 유형과 개수를 다르게 하여 사용하는것이다
+# 그러니까 클래스 내의 같은 이름의 함수에서 매개변수만 다르게 받는 것```
+```
+
+## 5. FileRWA
+
+```
+#File 읽기 쓰기 수정
+
+f = open('test.txt','w')        # 파일을 새로 만들어서 쓴다, 덮어쓰기로 가능
+f.write('파일 쓰기')
+
+f = open('test.txt','r')
+f.readline()                    # 한 줄 읽기
+f.readlines()                   # 한 줄씩, 리스트 형태로 읽기
+f.read()                        # 파일 내용 전체를 문자열로
+
+f = open('test.txt','a')
+f.write('기존 파일 그대로, 이어서 쓰기')
+
+f.close()                       # 사용하면 닫아줘야 다음 파일 사용시 에러가 없다
+                                # with문을 사용하면 자동으로 해줌
+
+with open('test..txt', 'w') as f:
+     f.write('텍스트')
+```
+
+## 6. Module
+
+``` python
+# mod.py 가 같은 디렉토리에 있다면
+import mod
+# 를 사용하여 불러올 수 있다.
+# 그냥 import 는 a.mod.func() 이렇게 써야함
+# 또는 모듈의 함수만 가져오고 싶을 땐
+from mod import add
+# from을 써서 필요한 함수만 가져 올 수 있다.
+from mod import * 
+# 로 모든 함수를 가져 올 수 있다.
+# from을 쓰면 a.func()로 바로 쓸 수 있음
+
+# 그러나 모듈을 불러오게 된다면
+# 클래스의 함수가 아닌 밖의 print와 같은 문장은 바로 실행하게 되는데
+if __name__ == "__main__":  
+# 를 사용하여 이 아래에 둠으로써 다른 파일에서 실행 시 바로 시작하지 않도록 한다
+
+# sys 모듈을 사용하여 지정한 디렉터리가 사용이 가능하다
+import sys
+sys.path.append("C:/")
+# 이러면 C 안에있는 파이썬 파일이 사용 가능하다
+
+# 또는 PYTHONPATH 환경변수를 사용하는 방법
+# cmd 명령어 창에서
+# set PYTHONPATH=C:\
+# 이러면 C 안에있는 파이썬 파일이 사용 가능하다
 ```
