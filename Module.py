@@ -1,4 +1,4 @@
-# Dictionary.py 가 같은 디렉토리에 있다면
+# mod.py 가 같은 디렉토리에 있다면
 import mod # 를 사용하여 불러올 수 있다.
 # 그냥 import 는 a.mod.func() 이렇게 써야함
 # 또는 모듈의 함수만 가져오고 싶을 땐
